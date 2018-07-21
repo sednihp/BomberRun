@@ -3,7 +3,7 @@
 Plane::Plane(const double planeStartY) : Sprite("files/images/plane/plane.bmp"),
 										width(84),
 										height(39),                                            
-										stepDown(20),
+										stepDown(height),
 										speed(120),
 										planeX(-width),
 										offScreen(false), crashed(false),

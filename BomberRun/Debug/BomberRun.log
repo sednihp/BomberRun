@@ -1,22 +1,7 @@
-﻿  AudioCache.cpp
-  Bomb.cpp
-  Building.cpp
-  Cloud.cpp
-  CollisionEngine.cpp
-  Engine.cpp
-  FontCache.cpp
-  GameTexture.cpp
-  ImageCache.cpp
+﻿  Engine.cpp
   Level.cpp
-  main.cpp
-  MediaCache.cpp
-  Particle.cpp
-  ParticleEngine.cpp
-  Plane.cpp
-  Player.cpp
   StateMachine.cpp
-  TextCache.cpp
   Title.cpp
-  Vectors.cpp
+  main.cpp
   Generating Code...
   BomberRun.vcxproj -> D:\Dropbox\Code\C++\BomberRun\Debug\BomberRun.exe
