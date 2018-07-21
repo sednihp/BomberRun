@@ -123,8 +123,8 @@ void MediaCache::renderTexture(std::shared_ptr<GameTexture> tex, const int x, co
     SDL_Rect pos;
     pos.x = x;
     pos.y = y;
-	pos.w = tex->w();
-	pos.h = tex->h();
+	pos.w = tex->getW();
+	pos.h = tex->getH();
  
 	SDL_RenderCopy(ren, tex->texture(), NULL, &pos);
 }

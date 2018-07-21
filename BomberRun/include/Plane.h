@@ -28,9 +28,7 @@ class Plane : public Sprite
         const bool isOffScreen() const { return offScreen; }
         const SDL_Rect getBox();
 		void setDirection(const Vector2D newDir) { direction = newDir; }
-
         void move(const double deltaTime, const int screenWidth, const int groundLevel, const int level, const bool stepDown);
-
 		void crash();
 		const bool hasCrashed() const { return crashed; }
 		const bool isAlive();

@@ -13,7 +13,7 @@ Title::Title(MediaCache& mc, Player& p) : State(mc, p),
 
 	SDL_Color c = {255, 0, 0};
 	title = mediaCache.getText("Bomber Run", font, c);
-	title->setPosition(mediaCache.centreX(title->w()), 0);
+	title->setPosition(mediaCache.centreX(title->getW()), 0);
 
 	menu.push_back(mediaCache.getText("Play", menuFont, c));
 	menu.push_back(mediaCache.getText("High Scores", menuFont, c));
@@ -21,7 +21,7 @@ Title::Title(MediaCache& mc, Player& p) : State(mc, p),
 
 	for(size_t i=0; i<menu.size(); ++i)
 	{
-		menu[i]->setPosition(mediaCache.centreX(menu[i]->w()), mediaCache.centreY(menu[i]->h()) + i*menu[i]->h());
+		menu[i]->setPosition(mediaCache.centreX(menu[i]->getW()), mediaCache.centreY(menu[i]->getH()) + i*menu[i]->getH());
 	}
 }
 
@@ -51,11 +51,11 @@ void Title::update(const double, Engine*)
 
 void Title::render()
 {
-	mediaCache.renderTexture(title, title->x(), title->y());
+	mediaCache.renderTexture(title, title->getX(), title->getY());
 
 	for(auto& item : menu)
 	{
-		mediaCache.renderTexture(item, item->x(), item->y());
+		mediaCache.renderTexture(item, item->getX(), item->getY());
 	}
 }
 

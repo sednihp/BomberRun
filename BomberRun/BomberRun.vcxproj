@@ -167,7 +167,7 @@
     <ClCompile Include="src\StateMachine.cpp" />
     <ClCompile Include="src\TextCache.cpp" />
     <ClCompile Include="src\Title.cpp" />
-    <ClCompile Include="Vectors.cpp" />
+    <ClCompile Include="src\Vectors.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

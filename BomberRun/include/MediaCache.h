@@ -55,8 +55,8 @@ class MediaCache
 		void clearScreen();
 		void updateScreen() { SDL_RenderPresent(ren); }
 
-		int scrWidth() const { return mScrWidth; }
-		int scrHeight() const { return mScrHeight; }
+		int getScrWidth() const { return mScrWidth; }
+		int getScrHeight() const { return mScrHeight; }
 		int centreX(int gtWidth) const;
 		int centreY(int gtHeight) const;
 

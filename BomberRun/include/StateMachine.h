@@ -16,9 +16,7 @@ class StateMachine
 		virtual ~StateMachine();
 
 		void setCurrentState(std::shared_ptr<State> s) { mCurrentState = std::shared_ptr<State>(s); }
-
 		std::shared_ptr<State> currentState() const { return mCurrentState; }
-
 		void changeState(std::shared_ptr<State> newState);
 };
 

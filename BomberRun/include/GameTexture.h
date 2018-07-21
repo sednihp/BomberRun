@@ -14,10 +14,10 @@ class GameTexture
 		GameTexture(SDL_Texture*);
 		~GameTexture();
 
-		const int w() const { return box.w; };
-		const int h() const { return box.h; }
-		const int x() const { return box.x; }
-		const int y() const { return box.y; }
+		const int getW() const { return box.w; };
+		const int getH() const { return box.h; }
+		const int getX() const { return box.x; }
+		const int getY() const { return box.y; }
 		const SDL_Rect getBox() const { return box; }
 		SDL_Texture* texture() const { return tex; }
 

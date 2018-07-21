@@ -2,7 +2,7 @@
 #include <algorithm>
 
 Level::Level(MediaCache& mc, Player& p) : State(mc, p),
-											groundLevel(mediaCache.scrHeight() - 40),
+											groundLevel(mediaCache.getScrHeight() - 40),
 											plane(std::make_unique<Plane>()),
 											bomb(nullptr),
 											paused(false), planeParked(false),
@@ -127,9 +127,9 @@ void Level::render()
 	}
 
 	lvlScoreMsg = mediaCache.getText(std::to_string(levelScore), font, { 255,0,0 });
-	mediaCache.renderTexture(lvlScoreMsg, mediaCache.centreX(lvlScoreMsg->getBox().w), mediaCache.scrHeight() - lvlScoreMsg->getBox().h);
+	mediaCache.renderTexture(lvlScoreMsg, mediaCache.centreX(lvlScoreMsg->getBox().w), mediaCache.getScrHeight() - lvlScoreMsg->getBox().h);
 
-	mediaCache.renderTexture(muteIcon, 0, mediaCache.scrHeight() - muteIcon->getBox().h);
+	mediaCache.renderTexture(muteIcon, 0, mediaCache.getScrHeight() - muteIcon->getBox().h);
 }
 
 void Level::exit(Engine* )
@@ -144,7 +144,7 @@ void Level::generateBackground()
 {
 	groundLine.x = 0;
 	groundLine.y = static_cast<Sint16>(groundLevel);
-	groundLine.w = static_cast<Uint16>(mediaCache.scrWidth());
+	groundLine.w = static_cast<Uint16>(mediaCache.getScrWidth());
 	groundLine.h = 1;
 
 	groundColor.r = 120;
@@ -153,7 +153,7 @@ void Level::generateBackground()
 
 	skybox.x = 0;
 	skybox.y = 0;
-	skybox.w = static_cast<Uint16>(mediaCache.scrWidth());
+	skybox.w = static_cast<Uint16>(mediaCache.getScrWidth());
 	skybox.h = static_cast<Uint16>(groundLevel);
 
 	skyColor.r = 187;
@@ -198,7 +198,7 @@ void Level::generateClouds()
 {
 	for (int i = 0; i<5; ++i)
 	{
-		std::shared_ptr<Cloud> c = std::make_shared<Cloud>(mediaCache.scrWidth());
+		std::shared_ptr<Cloud> c = std::make_shared<Cloud>(mediaCache.getScrWidth());
 		c->setTexture(mediaCache.getImage(c->getImage()));
 		clouds.push_back(c);
 	}
@@ -213,7 +213,7 @@ void Level::generateBomb()
 
 		double bombPosX = plane->getX() + (plane->getBox().w - bomb->getBox().w) / 2;
 
-		if (bombPosX > 0 && bombPosX < mediaCache.scrWidth())
+		if (bombPosX > 0 && bombPosX < mediaCache.getScrWidth())
 		{
 			bomb->setPosition(bombPosX, plane->getPosition().y + plane->getBox().h);
 		}
@@ -229,7 +229,7 @@ void Level::parkPlane()
 	plane->setToPark();
 
 	Vector2D parkVector;
-	parkVector.x = (mediaCache.scrWidth() - 4 * plane->getBox().w) - plane->getPosition().x;
+	parkVector.x = (mediaCache.getScrWidth() - 4 * plane->getBox().w) - plane->getPosition().x;
 	parkVector.y = (groundLevel - plane->getBox().h) - plane->getPosition().y;
 
 	plane->setDirection(parkVector);
@@ -239,7 +239,7 @@ void Level::udpateClouds(const double deltaTime)
 {
 	for (auto& cloud : clouds)
 	{
-		cloud->move(mediaCache.scrWidth(), deltaTime);
+		cloud->move(mediaCache.getScrWidth(), deltaTime);
 	}
 }
 
@@ -250,7 +250,7 @@ void Level::updatePlane(const double deltaTime)
 {
 	if (!plane->isParked() && !plane->hasCrashed())
 	{
-		plane->move(deltaTime, mediaCache.scrWidth(), groundLevel, 1, true);
+		plane->move(deltaTime, mediaCache.getScrWidth(), groundLevel, 1, true);
 
 		for (const auto& building : buildings)
 		{
